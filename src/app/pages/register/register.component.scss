@@ -108,31 +108,33 @@
     }
 
     &-login {
-        color: #e67e22;
-        text-decoration: underline;
-        font-size: 1rem;
+      color: #e67e22;
+      text-decoration: underline;
+      font-size: 1rem;
     }
   }
 }
 
 .show-password {
-    width: 20px;
-    position: relative;
-    left: 155px;
-    top: 40px;
+  width: 20px;
+  position: relative;
+  left: 155px;
+  top: 40px;
+  cursor: pointer;
 
-    @media screen and (min-width: 699px) {
-        left: 85px;
-    }
+  @media screen and (min-width: 699px) {
+    left: 85px;
+  }
 }
 
 .show-password-confirm {
-    width: 20px;
-    position: relative;
-    left: 55px;
-    top: 40px;
+  width: 20px;
+  position: relative;
+  left: 55px;
+  top: 40px;
+  cursor: pointer;
 
-    @media screen and (min-width: 699px) {
-        left: -15px;
-    }
+  @media screen and (min-width: 699px) {
+    left: -15px;
+  }
 }

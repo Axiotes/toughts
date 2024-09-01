@@ -16,7 +16,11 @@
       <div class="register__inputs-simple">
         <label for="password">
           Senha
-          <img src="/assets/{{ iconPassword }}-eye.png" class="show-password" />
+          <img
+            src="/assets/{{ iconPassword }}-eye.png"
+            class="show-password"
+            (click)="toggleVisibility()"
+          />
         </label>
         <input type="{{ typeInput }}" />
       </div>
@@ -26,6 +30,7 @@
           <img
             src="/assets/{{ iconPassword }}-eye.png"
             class="show-password-confirm"
+            (click)="toggleVisibility()"
           />
         </label>
         <input type="{{ typeInput }}" />
