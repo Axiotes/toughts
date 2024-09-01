@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../types/user.type';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +13,9 @@ export class ApiService {
 
   public checkLogged(): Observable<any> {
     return this.http.get(`${this.urlApi}/logged-in`);
+  }
+
+  public register(user: User) {
+    return this.http.post(`${this.urlApi}/register`, user);
   }
 }
