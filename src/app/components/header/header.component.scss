@@ -9,7 +9,7 @@
 
   &__logo {
     width: 100%;
-    max-width: 60px;
+    max-width: 45px;
 
     @media screen and (max-width: 550px) {
         max-width: 40px;
@@ -26,6 +26,7 @@
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
+      transition: 0.5s;
 
       @media screen and (max-width: 550px) {
         font-size: 0.7rem;
