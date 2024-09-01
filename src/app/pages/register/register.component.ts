@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { FlashMessageComponent } from '../../components/flash-message/flash-message.component';
 
 @Component({
   selector: 'app-register',
