@@ -10,6 +10,10 @@
   &__logo {
     width: 100%;
     max-width: 60px;
+
+    @media screen and (max-width: 550px) {
+        max-width: 40px;
+      }
   }
 
   &__nav {
@@ -22,6 +26,10 @@
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
+
+      @media screen and (max-width: 550px) {
+        font-size: 0.7rem;
+      }
 
       &:hover {
         color: #e67e22;
