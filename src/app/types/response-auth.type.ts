@@ -1,4 +1,4 @@
-export type ResponseRegister = {
+export type ResponseAuth = {
   message: string;
   registered: boolean;
 };
