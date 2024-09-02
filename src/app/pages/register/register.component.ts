@@ -10,6 +10,7 @@ import { ApiService } from '../../services/api.service';
 import { FlashMessageComponent } from '../../components/flash-message/flash-message.component';
 import { CommonModule } from '@angular/common';
 import { ResponseAuth } from '../../types/response-auth.type';
+import { AuthLoginService } from '../../services/auth-login.service';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,11 @@ export class RegisterComponent {
   public showMessage: boolean = false;
   public message: string = '';
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private authLogin: AuthLoginService
+  ) {
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -55,7 +60,8 @@ export class RegisterComponent {
         this.message = response.message;
         this.showMessage = true;
 
-        if (response.registered) {
+        if (response.registered && response.userId) {
+          this.authLogin.setSession(response.userId);
           this.router.navigate(['/toughts']);
         }
       },

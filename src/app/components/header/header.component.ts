@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { AuthLoginService } from '../../services/auth-login.service';
 
 @Component({
   selector: 'app-header',
@@ -10,15 +10,25 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public isLogged: boolean = false;
 
-  constructor(private apiService: ApiService) {
-    this.apiService.checkLogged().subscribe({
+  constructor(private authLogin: AuthLoginService) {
+    this.authLogin.getSession().subscribe({
       next: (response) => {
-        this.isLogged = response;
+        if (response) {
+          this.isLogged = true;
+        }
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        console.log(err);
+      },
     });
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('session')) {
+      this.isLogged = true;
+    }
   }
 }

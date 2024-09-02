@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FlashMessageComponent } from '../../components/flash-message/flash-message.component';
 import { ApiService } from '../../services/api.service';
 import { ResponseAuth } from '../../types/response-auth.type';
+import { AuthLoginService } from '../../services/auth-login.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,11 @@ export class LoginComponent {
   public typeInput: string = 'password';
   public iconPassword: string = 'closed';
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private authLogin: AuthLoginService
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -49,7 +54,8 @@ export class LoginComponent {
         this.message = response.message;
         this.showMessage = true;
 
-        if (response.registered) {
+        if (response.registered && response.userId) {
+          this.authLogin.setSession(response.userId);
           this.router.navigate(['/toughts']);
         }
       },
