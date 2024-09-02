@@ -8,11 +8,17 @@ import {
 } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { FlashMessageComponent } from '../../components/flash-message/flash-message.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    ReactiveFormsModule,
+    FlashMessageComponent,
+    CommonModule,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -20,6 +26,8 @@ export class RegisterComponent {
   public typeInput: string = 'password';
   public iconPassword: string = 'closed';
   public registerForm: FormGroup;
+  public showMessage: boolean = false;
+  public message: string = '';
 
   constructor(private apiService: ApiService) {
     this.registerForm = new FormGroup({
@@ -36,7 +44,8 @@ export class RegisterComponent {
       this.registerForm.get('password')?.value !==
         this.registerForm.get('confirmPassword')?.value
     ) {
-      console.log('Erro ao cadastrar, verificar campos');
+      this.message = 'Erro ao cadastrar, verificar campos!';
+      this.showMessage = true;
       return;
     }
 

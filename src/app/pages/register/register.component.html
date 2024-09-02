@@ -43,3 +43,5 @@
     <a routerLink="/login" class="register__confirm-login">Login</a>
   </div>
 </form>
+
+<app-flash-message *ngIf="showMessage" [message]="message" (showMessage)="showMessage = $event"></app-flash-message>
