@@ -1,1 +1,32 @@
-<p>login works!</p>
+<form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+  <h1 class="login__title">Login</h1>
+
+  <div class="login__inputs">
+    <div class="login__inputs-simple">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" />
+    </div>
+    <div class="login__inputs-simple">
+      <label for="password">
+        Senha
+        <img
+          src="/assets/{{ iconPassword }}-eye.png"
+          class="show-password"
+          (click)="toggleVisibility()"
+        />
+      </label>
+      <input type="{{ typeInput }}" formControlName="password" />
+    </div>
+  </div>
+
+  <div class="login__confirm">
+    <button type="submit" class="login__confirm-btn">Login</button>
+    <a routerLink="/register" class="login__confirm-login">Cadastre-se</a>
+  </div>
+</form>
+
+<app-flash-message
+  *ngIf="showMessage"
+  [message]="message"
+  (showMessage)="showMessage = $event"
+></app-flash-message>

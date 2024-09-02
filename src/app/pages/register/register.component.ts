@@ -9,7 +9,7 @@ import {
 import { ApiService } from '../../services/api.service';
 import { FlashMessageComponent } from '../../components/flash-message/flash-message.component';
 import { CommonModule } from '@angular/common';
-import { ResponseRegister } from '../../types/response-register.type';
+import { ResponseAuth } from '../../types/response-auth.type';
 
 @Component({
   selector: 'app-register',
@@ -51,7 +51,7 @@ export class RegisterComponent {
     }
 
     this.apiService.register(this.registerForm.value).subscribe({
-      next: (response: ResponseRegister) => {
+      next: (response: ResponseAuth) => {
         this.message = response.message;
         this.showMessage = true;
 
