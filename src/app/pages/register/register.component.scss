@@ -1,0 +1,140 @@
+.register {
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+
+  &__title {
+    font-size: 2rem;
+    color: white;
+    border-left: 3px solid #e67e22;
+    padding-left: 8px;
+    font-weight: 900;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+
+    label {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+
+    input {
+      width: 260px;
+      height: 35px;
+      border-radius: 35px;
+      padding-left: 10px;
+      font-size: 0.8rem;
+      border: 2px solid #e67e22;
+      transition: 0.5s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 5px;
+      color: white;
+
+      @media screen and (min-width: 699px) {
+        width: 400px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+    }
+
+    input:focus {
+      outline: 4px solid #e67e22;
+      animation: 0.5s infinite forwards;
+      border: none;
+    }
+
+    &-simple {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    &-password {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: start;
+      justify-content: center;
+
+      @media screen and (min-width: 699px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        gap: 20px;
+
+        input {
+          width: 190px;
+        }
+      }
+    }
+  }
+
+  &__confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    &-btn {
+      width: 140px;
+      height: 40px;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 400;
+      border: 2px solid #e67e22;
+      cursor: pointer;
+      transition: 0.8s;
+
+      &:hover {
+        background-color: #e67e22;
+      }
+    }
+
+    &-login {
+      color: #e67e22;
+      text-decoration: underline;
+      font-size: 1rem;
+    }
+  }
+}
+
+.show-password {
+  width: 20px;
+  position: relative;
+  left: 155px;
+  top: 40px;
+  cursor: pointer;
+
+  @media screen and (min-width: 699px) {
+    left: 85px;
+  }
+}
+
+.show-password-confirm {
+  width: 20px;
+  position: relative;
+  left: 55px;
+  top: 40px;
+  cursor: pointer;
+
+  @media screen and (min-width: 699px) {
+    left: -15px;
+  }
+}

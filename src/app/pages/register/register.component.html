@@ -1,1 +1,47 @@
-<p>register works!</p>
+<form class="register" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <h1 class="register__title">Cadastre-se</h1>
+
+  <div class="register__inputs">
+    <div class="register__inputs-simple">
+      <label for="name">Nome</label>
+      <input type="text" formControlName="name" />
+    </div>
+
+    <div class="register__inputs-simple">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" />
+    </div>
+
+    <div class="register__inputs-password">
+      <div class="register__inputs-simple">
+        <label for="password">
+          Senha
+          <img
+            src="/assets/{{ iconPassword }}-eye.png"
+            class="show-password"
+            (click)="toggleVisibility()"
+          />
+        </label>
+        <input type="{{ typeInput }}" formControlName="password" />
+      </div>
+      <div class="register__inputs-simple">
+        <label for="password">
+          Confirmar senha
+          <img
+            src="/assets/{{ iconPassword }}-eye.png"
+            class="show-password-confirm"
+            (click)="toggleVisibility()"
+          />
+        </label>
+        <input type="{{ typeInput }}" formControlName="confirmPassword" />
+      </div>
+    </div>
+  </div>
+
+  <div class="register__confirm">
+    <button type="submit" class="register__confirm-btn">Cadastra-se</button>
+    <a routerLink="/login" class="register__confirm-login">Login</a>
+  </div>
+</form>
+
+<app-flash-message *ngIf="showMessage" [message]="message" (showMessage)="showMessage = $event"></app-flash-message>
