@@ -12,10 +12,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public checkLogged(): Observable<any> {
-    return this.http.get(`${this.urlApi}/logged-in`);
-  }
-
   public register(user: User) {
     return this.http.post<ResponseAuth>(`${this.urlApi}/register`, user);
   }

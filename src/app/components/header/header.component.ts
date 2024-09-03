@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthLoginService } from '../../services/auth-login.service';
 
@@ -13,7 +13,7 @@ import { AuthLoginService } from '../../services/auth-login.service';
 export class HeaderComponent implements OnInit {
   public isLogged: boolean = false;
 
-  constructor(private authLogin: AuthLoginService) {
+  constructor(private authLogin: AuthLoginService, private router: Router) {
     this.authLogin.getSession().subscribe({
       next: (response) => {
         if (response) {
@@ -30,5 +30,11 @@ export class HeaderComponent implements OnInit {
     if (localStorage.getItem('session')) {
       this.isLogged = true;
     }
+  }
+
+  public logout(): void {
+    this.authLogin.logout();
+    this.router.navigate(['/toughts']);
+    this.isLogged = false;
   }
 }

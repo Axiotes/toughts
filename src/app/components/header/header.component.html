@@ -10,6 +10,6 @@
   <nav class="header__nav" *ngIf="isLogged">
     <a routerLink="/toughts">Pensamentos</a>
     <a routerLink="/dashboard">Dashboard</a>
-    <a>Sair</a>
+    <a (click)="logout()">Sair</a>
   </nav>
 </header>
