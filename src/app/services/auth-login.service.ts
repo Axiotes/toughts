@@ -18,4 +18,8 @@ export class AuthLoginService {
   public getSession(): Observable<string | null> {
     return this.sessionSubject.asObservable();
   }
+
+  public logout(): void {
+    localStorage.removeItem('session');
+  }
 }
