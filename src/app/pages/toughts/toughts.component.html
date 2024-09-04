@@ -1,1 +1,45 @@
-<p>toughts works!</p>
+<main class="toughts">
+  <h1 class="toughts__title">
+    Conheça alguns dos nossos <span>Pensamentos</span>:
+  </h1>
+
+  <div class="toughts__filter">
+    <form
+      class="toughts__filter__search"
+      [formGroup]="searchForm"
+      (ngSubmit)="getToughts(search)"
+    >
+      <input
+        type="text"
+        placeholder="Está buscando por algo?"
+        formControlName="search"
+      />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div class="toughts__filter__order">
+      <p class="toughts__filter__order-by">Ordenar por:</p>
+      <mat-icon
+        class="toughts__filter__order-mat-icon"
+        (click)="changeOrder(true)"
+        >arrow_upward</mat-icon
+      >
+      <mat-icon
+        class="toughts__filter__order-mat-icon"
+        (click)="changeOrder(false)"
+        >arrow_downward</mat-icon
+      >
+      <button (click)="getToughts('')">Limpar</button>
+    </div>
+  </div>
+
+  <div class="toughts__all" [ngClass]="{ reverse: !order }">
+    <app-thinking
+      *ngFor="let tought of toughts"
+      [title]="tought.title"
+      [name]="tought.User.name"
+    ></app-thinking>
+
+    <h1 *ngIf="toughts.length === 0" class="toughts__all-empty">Sem pensamentos... 😕</h1>
+  </div>
+</main>

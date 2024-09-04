@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../types/user.type';
 import { ResponseAuth } from '../types/response-auth.type';
+import { Tought } from '../types/tought.type';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class ApiService {
 
   public login(user: User) {
     return this.http.post<ResponseAuth>(`${this.urlApi}/login`, user);
+  }
+
+  public allToughts(search: string) {
+    return this.http.get<Tought[]>(`${this.urlApi}/toughts/${search}`);
   }
 }
