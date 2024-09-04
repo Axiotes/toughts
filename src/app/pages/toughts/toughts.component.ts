@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { ThinkingComponent } from "../../components/thinking/thinking.component";
 
 @Component({
   selector: 'app-toughts',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule, ThinkingComponent],
   templateUrl: './toughts.component.html',
   styleUrl: './toughts.component.scss'
 })

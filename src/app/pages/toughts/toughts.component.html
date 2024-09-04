@@ -1,1 +1,25 @@
-<p>toughts works!</p>
+<main class="toughts">
+  <h1 class="toughts__title">
+    Conheça alguns dos nossos <span>Pensamentos</span>:
+  </h1>
+
+  <div class="toughts__filter">
+    <form class="toughts__filter__search">
+      <input type="text" placeholder="Está buscando por algo?" />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div class="toughts__filter__order">
+      <p class="toughts__filter__order-by">Ordenar por:</p>
+      <mat-icon class="toughts__filter__order-mat-icon">arrow_upward</mat-icon>
+      <mat-icon class="toughts__filter__order-mat-icon"
+        >arrow_downward</mat-icon
+      >
+      <button>Limpar</button>
+    </div>
+  </div>
+
+  <div class="toughts__all">
+    <app-thinking></app-thinking>
+  </div>
+</main>
