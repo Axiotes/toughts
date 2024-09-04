@@ -4,8 +4,16 @@
   </h1>
 
   <div class="toughts__filter">
-    <form class="toughts__filter__search">
-      <input type="text" placeholder="Está buscando por algo?" />
+    <form
+      class="toughts__filter__search"
+      [formGroup]="searchForm"
+      (ngSubmit)="searching()"
+    >
+      <input
+        type="text"
+        placeholder="Está buscando por algo?"
+        formControlName="search"
+      />
       <button type="submit">Buscar</button>
     </form>
 
@@ -20,6 +28,10 @@
   </div>
 
   <div class="toughts__all">
-    <app-thinking></app-thinking>
+    <app-thinking
+      *ngFor="let tought of toughts"
+      [title]="tought.title"
+      [name]="tought.User.name"
+    ></app-thinking>
   </div>
 </main>
