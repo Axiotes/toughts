@@ -114,6 +114,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    &-empty {
+      color: white;
+      font-size: 1.3rem;
+    }
   }
 }
 

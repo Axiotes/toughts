@@ -21,40 +21,38 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class ToughtsComponent {
   public toughts: Tought[] = [];
   public searchForm: FormGroup;
+  public order: boolean = true;
 
   constructor(private apiService: ApiService) {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
     });
 
-    this.apiService.allToughts(this.search).subscribe({
-      next: (response) => {
-        response.forEach((res) => {
-          this.toughts.push(res);
-        });
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.getToughts('');
   }
 
   public get search() {
     return this.searchForm.get('search')?.value;
   }
 
-  public searching() {
-    this.apiService.allToughts(this.search).subscribe({
+  public getToughts(search: string) {
+    this.apiService.allToughts(search).subscribe({
       next: (response) => {
         this.toughts.length = 0;
 
         response.forEach((res) => {
           this.toughts.push(res);
         });
+
+        this.searchForm.get('search')?.reset(search);
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+
+  public changeOrder(order: boolean) {
+    this.order = order;
   }
 }

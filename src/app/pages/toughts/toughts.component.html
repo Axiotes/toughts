@@ -7,7 +7,7 @@
     <form
       class="toughts__filter__search"
       [formGroup]="searchForm"
-      (ngSubmit)="searching()"
+      (ngSubmit)="getToughts(search)"
     >
       <input
         type="text"
@@ -19,19 +19,27 @@
 
     <div class="toughts__filter__order">
       <p class="toughts__filter__order-by">Ordenar por:</p>
-      <mat-icon class="toughts__filter__order-mat-icon">arrow_upward</mat-icon>
-      <mat-icon class="toughts__filter__order-mat-icon"
+      <mat-icon
+        class="toughts__filter__order-mat-icon"
+        (click)="changeOrder(true)"
+        >arrow_upward</mat-icon
+      >
+      <mat-icon
+        class="toughts__filter__order-mat-icon"
+        (click)="changeOrder(false)"
         >arrow_downward</mat-icon
       >
-      <button>Limpar</button>
+      <button (click)="getToughts('')">Limpar</button>
     </div>
   </div>
 
-  <div class="toughts__all">
+  <div class="toughts__all" [ngClass]="{ reverse: !order }">
     <app-thinking
       *ngFor="let tought of toughts"
       [title]="tought.title"
       [name]="tought.User.name"
     ></app-thinking>
+
+    <h1 *ngIf="toughts.length === 0" class="toughts__all-empty">Sem pensamentos... 😕</h1>
   </div>
 </main>
