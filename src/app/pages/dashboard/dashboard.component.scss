@@ -1,0 +1,101 @@
+.dashboard {
+  height: 90vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5% 15% 80%;
+  gap: 30px;
+  align-items: start;
+  justify-items: center;
+  padding-top: 50px;
+
+  &__title {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    span {
+      color: #e67e22;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    &__subtitle {
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    &__new {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+
+      input {
+        width: 220px;
+        height: 35px;
+        border-radius: 35px;
+        padding-left: 10px;
+        font-size: 0.8rem;
+        border: 2px solid #e67e22;
+        transition: 0.5s;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        color: white;
+
+        @media screen and (min-width: 699px) {
+          width: 350px;
+          font-size: 0.9rem;
+        }
+      }
+
+      input:focus {
+        outline: 4px solid #e67e22;
+        animation: 0.5s infinite forwards;
+        border: none;
+      }
+
+      button {
+        width: 70px;
+        height: 35px;
+        border-radius: 10px;
+        color: #e67e22;
+        font-size: 0.8rem;
+        font-weight: 400;
+        border: 2px solid #e67e22;
+        cursor: pointer;
+        transition: 0.8s;
+
+        &:hover {
+          background-color: #e67e22;
+          color: white;
+        }
+      }
+    }
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    &__subtitle {
+        color: white;
+        font-size: 1.3rem;
+    }
+
+    &__toughts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+  }
+}

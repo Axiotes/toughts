@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<main class="dashboard">
+  <h1 class="dashboard__title">Olá, <span>Nome do usuario</span>!</h1>
+
+  <form class="dashboard__form">
+    <h2 class="dashboard__form__subtitle">Diga o que está pensando:</h2>
+
+    <div class="dashboard__form__new">
+      <input type="text" />
+      <button type="submit">Publicar</button>
+    </div>
+  </form>
+
+  <div class="dashboard__user">
+    <h2 class="dashboard__user__subtitle">Seus pensamentos:</h2>
+
+    <div class="dashboard__user__toughts">
+      <app-my-tought></app-my-tought>
+    </div>
+  </div>
+</main>
