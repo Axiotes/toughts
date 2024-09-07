@@ -38,4 +38,11 @@ export class ApiService {
       newTought
     );
   }
+
+  public removeTought(id: number, userId: number) {
+    return this.http.post<ResponseTought>(`${this.urlApi}/toughts/remove/${userId}`, {
+      id,
+      userId,
+    });
+  }
 }

@@ -26,7 +26,7 @@ import { FlashMessageComponent } from '../../components/flash-message/flash-mess
 export class DashboardComponent {
   public newTought: FormGroup;
   public name: string = '';
-  public titles: string[] = [];
+  public toughts: { id: number; title: string }[] = [];
   public message: string = '';
   public showMessage: boolean = false;
   private userId: number = -1;
@@ -47,11 +47,14 @@ export class DashboardComponent {
   public getToughtsDashboard() {
     this.apiService.dashboard(this.userId).subscribe({
       next: (response) => {
-        this.titles.length = 0;
+        this.toughts.length = 0;
         this.name = response.name;
 
         response.Toughts.forEach((res) => {
-          this.titles.push(res.title);
+          this.toughts.push({
+            id: res.id,
+            title: res.title,
+          });
         });
       },
       error: (err) => {

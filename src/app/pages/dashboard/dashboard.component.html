@@ -18,17 +18,21 @@
   </form>
 
   <div class="dashboard__user">
-    <h2 class="dashboard__user__subtitle" *ngIf="titles.length !== 0">
+    <h2 class="dashboard__user__subtitle" *ngIf="toughts.length !== 0">
       Seus pensamentos:
     </h2>
 
     <div class="dashboard__user__toughts">
       <app-my-tought
-        *ngFor="let title of titles"
-        [title]="title"
+        *ngFor="let tought of toughts"
+        [title]="tought.title"
+        [id]="tought.id"
+        (updateDashboard)="getToughtsDashboard()"
+        (message)="message = $event"
+        (showMessage)="showMessage = $event"
       ></app-my-tought>
 
-      <h1 *ngIf="titles.length === 0" class="dashboard__user__toughts-empty">
+      <h1 *ngIf="toughts.length === 0" class="dashboard__user__toughts-empty">
         Sem pensamentos... 😕
       </h1>
     </div>
