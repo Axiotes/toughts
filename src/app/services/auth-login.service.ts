@@ -22,4 +22,10 @@ export class AuthLoginService {
   public logout(): void {
     localStorage.removeItem('session');
   }
+
+  public get userId(): number {
+    let userId = localStorage.getItem('session');
+
+    return Number(userId);
+  }
 }

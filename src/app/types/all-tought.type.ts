@@ -1,4 +1,4 @@
-export type Tought = {
+export type AllTought = {
   id: number;
   title: string;
   createdAt: string;

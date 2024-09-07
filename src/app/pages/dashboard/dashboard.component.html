@@ -1,5 +1,5 @@
 <main class="dashboard">
-  <h1 class="dashboard__title">Olá, <span>Nome do usuario</span>!</h1>
+  <h1 class="dashboard__title">Olá, <span>{{ name }}</span>!</h1>
 
   <form class="dashboard__form">
     <h2 class="dashboard__form__subtitle">Diga o que está pensando:</h2>
@@ -11,10 +11,12 @@
   </form>
 
   <div class="dashboard__user">
-    <h2 class="dashboard__user__subtitle">Seus pensamentos:</h2>
+    <h2 class="dashboard__user__subtitle" *ngIf="titles.length !== 0">Seus pensamentos:</h2>
 
     <div class="dashboard__user__toughts">
-      <app-my-tought></app-my-tought>
+      <app-my-tought *ngFor="let title of titles" [title]="title"></app-my-tought>
+
+      <h1 *ngIf="titles.length === 0" class="dashboard__user__toughts-empty">Sem pensamentos... 😕</h1>
     </div>
   </div>
 </main>

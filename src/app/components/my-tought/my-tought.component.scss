@@ -1,0 +1,48 @@
+.my {
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid grey;
+  gap: 15px;
+  padding: 5px;
+
+  @media screen and (min-width: 619px) {
+    min-width: 500px;
+  }
+
+  &__title {
+    color: white;
+    font-size: 1rem;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    button {
+      width: 55px;
+      height: 30px;
+      border-radius: 10px;
+      color: #e67e22;
+      font-size: 0.8rem;
+      font-weight: 400;
+      border: 2px solid #e67e22;
+      cursor: pointer;
+      transition: 0.8s;
+
+      &:hover {
+        background-color: #e67e22;
+        color: white;
+      }
+
+      @media screen and (max-width: 619px) {
+        font-size: 0.6rem;
+        width: 45px;
+        height: 25px;
+      }
+    }
+  }
+}

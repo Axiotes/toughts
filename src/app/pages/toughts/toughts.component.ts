@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ThinkingComponent } from '../../components/thinking/thinking.component';
 import { CommonModule } from '@angular/common';
-import { Tought } from '../../types/tought.type';
+import { AllTought } from '../../types/all-tought.type';
 import { ApiService } from '../../services/api.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,7 +19,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './toughts.component.scss',
 })
 export class ToughtsComponent {
-  public toughts: Tought[] = [];
+  public toughts: AllTought[] = [];
   public searchForm: FormGroup;
   public order: boolean = true;
 
