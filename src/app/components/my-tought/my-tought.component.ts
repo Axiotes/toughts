@@ -12,11 +12,14 @@ import { AuthLoginService } from '../../services/auth-login.service';
 export class MyToughtComponent {
   @Input() public title: string = '';
   @Input() public id: number = -1;
-  @Output() public message: EventEmitter<string> = new EventEmitter<string>();
-  @Output() public showMessage: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
+  @Output() public flashMessage: EventEmitter<{
+    message: string;
+    showMessage: boolean;
+  }> = new EventEmitter<{ message: string; showMessage: boolean }>();
   @Output() public updateDashboard: EventEmitter<void> =
     new EventEmitter<void>();
+  @Output() edit: EventEmitter<{ title: string; id: number }> =
+    new EventEmitter<{ title: string; id: number }>();
 
   constructor(
     private apiService: ApiService,
@@ -26,13 +29,22 @@ export class MyToughtComponent {
   public removeTought() {
     this.apiService.removeTought(this.id, this.authService.userId).subscribe({
       next: (response) => {
-        this.message.emit(response.message);
-        this.showMessage.emit(true);
+        this.flashMessage.emit({
+          message: response.message,
+          showMessage: true,
+        });
         this.updateDashboard.emit();
       },
       error: (err) => {
         console.log(err);
       },
+    });
+  }
+
+  public editTought() {
+    this.edit.emit({
+      title: this.title,
+      id: this.id,
     });
   }
 }

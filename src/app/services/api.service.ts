@@ -40,9 +40,19 @@ export class ApiService {
   }
 
   public removeTought(id: number, userId: number) {
-    return this.http.post<ResponseTought>(`${this.urlApi}/toughts/remove/${userId}`, {
-      id,
-      userId,
-    });
+    return this.http.post<ResponseTought>(
+      `${this.urlApi}/toughts/remove/${userId}`,
+      {
+        id,
+        userId,
+      }
+    );
+  }
+
+  public editTought(edit: { title: string; id: number }) {
+    return this.http.post<ResponseTought>(
+      `${this.urlApi}/toughts/edit/${edit.id}`,
+      edit
+    );
   }
 }

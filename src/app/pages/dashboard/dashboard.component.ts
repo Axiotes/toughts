@@ -25,11 +25,14 @@ import { FlashMessageComponent } from '../../components/flash-message/flash-mess
 })
 export class DashboardComponent {
   public newTought: FormGroup;
+  public editTought: FormGroup;
   public name: string = '';
   public toughts: { id: number; title: string }[] = [];
   public message: string = '';
   public showMessage: boolean = false;
+  public edit: boolean = false;
   private userId: number = -1;
+  private idTought: number = -1;
 
   constructor(
     private apiService: ApiService,
@@ -40,6 +43,10 @@ export class DashboardComponent {
     this.getToughtsDashboard();
 
     this.newTought = new FormGroup({
+      title: new FormControl('', Validators.required),
+    });
+
+    this.editTought = new FormGroup({
       title: new FormControl('', Validators.required),
     });
   }
@@ -85,5 +92,41 @@ export class DashboardComponent {
           console.log(err);
         },
       });
+  }
+
+  public changeTought(edit: { title: string; id: number }) {
+    this.editTought.get('title')?.setValue(edit.title);
+    this.idTought = edit.id;
+    this.edit = true;
+  }
+
+  public confirmEdit() {
+    const title = this.newTought.get('title')?.value;
+
+    if (!this.editTought.valid || !title) {
+      this.message = 'Digite algo para publicar';
+      this.showMessage = true;
+      return;
+    }
+
+    this.apiService
+      .editTought({
+        title: title,
+        id: this.idTought,
+      })
+      .subscribe({
+        next: (response) => {
+          this.message = response.message;
+          this.showMessage = true;
+          this.getToughtsDashboard();
+          this.edit = false;
+        },
+        error: (err) => [console.log(err)],
+      });
+  }
+
+  public setFlashMessage(flash: { message: string; showMessage: boolean }) {
+    this.message = flash.message;
+    this.showMessage = flash.showMessage;
   }
 }
