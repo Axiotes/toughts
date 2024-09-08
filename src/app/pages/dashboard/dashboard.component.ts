@@ -101,10 +101,10 @@ export class DashboardComponent {
   }
 
   public confirmEdit() {
-    const title = this.newTought.get('title')?.value;
+    const title = this.editTought.get('title')?.value;
 
     if (!this.editTought.valid || !title) {
-      this.message = 'Digite algo para publicar';
+      this.message = 'Digite algo para editar';
       this.showMessage = true;
       return;
     }
