@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from '../types/user.type';
 import { ResponseAuth } from '../types/response-auth.type';
-import { Tought } from '../types/tought.type';
+import { AllTought } from '../types/all-tought.type';
+import { MyToughts } from '../types/my-toughts.type';
+import { ResponseTought } from '../types/response-tought.type';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,36 @@ export class ApiService {
   }
 
   public allToughts(search: string) {
-    return this.http.get<Tought[]>(`${this.urlApi}/toughts/${search}`);
+    return this.http.get<AllTought[]>(`${this.urlApi}/toughts/${search}`);
+  }
+
+  public dashboard(userId: number) {
+    return this.http.get<MyToughts>(
+      `${this.urlApi}/toughts/dashboard/${userId}`
+    );
+  }
+
+  public createTought(newTought: { title: string; userId: number }) {
+    return this.http.post<ResponseTought>(
+      `${this.urlApi}/toughts/add/${newTought.userId}`,
+      newTought
+    );
+  }
+
+  public removeTought(id: number, userId: number) {
+    return this.http.post<ResponseTought>(
+      `${this.urlApi}/toughts/remove/${userId}`,
+      {
+        id,
+        userId,
+      }
+    );
+  }
+
+  public editTought(edit: { title: string; id: number }) {
+    return this.http.post<ResponseTought>(
+      `${this.urlApi}/toughts/edit/${edit.id}`,
+      edit
+    );
   }
 }
