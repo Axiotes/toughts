@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { AuthLoginService } from '../../services/auth-login.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-my-tought',
   standalone: true,
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './my-tought.component.html',
   styleUrl: './my-tought.component.scss',
 })
